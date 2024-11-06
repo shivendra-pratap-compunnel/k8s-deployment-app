@@ -12,7 +12,7 @@ image:
   spec:
     env:
       name: MONGODB_HOST
-      value: mongodb
+      value: db
 
 imagePullSecrets: []
 nameOverride: ""

@@ -10,7 +10,7 @@ spec:
   {{- end }}
   env:
   - name: MONGODB_DATABASE
-    value: {{ quote .Values.image.spec.env.value }}
+    value: testdata
   selector:
     matchLabels:
       {{- include "db.selectorLabels" . | nindent 6 }}

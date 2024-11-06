@@ -8,9 +8,6 @@ spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
-  env:
-  - name: {{ .Values.image.spec.env.name | quote }}
-    value: {{ quote .Values.image.spec.env.value }}
   selector:
     matchLabels:
       {{- include "helloworld.selectorLabels" . | nindent 6 }}
@@ -42,8 +39,10 @@ spec:
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
-              nodePort: {{ .Values.service.nodePort }}
               protocol: TCP
+          env:
+            - name: MONGODB_HOST
+              value: db
           livenessProbe:
             {{- toYaml .Values.livenessProbe | nindent 12 }}
           readinessProbe:

@@ -1,0 +1,26 @@
+helmDefaults:
+  timeout: 600  # 10 minutes
+  wait: true  # Waits for resources to be fully deployed and healthy before moving to the next chart deployment.
+  atomic: true  # Rolls back changes if it fails
+  verify: false
+  # diff:
+  #     enabled: true # Preview changes before applying them
+
+releases:
+  - name: db
+    chart: ./db
+    namespace: default
+    values:
+      - ./db/values.yaml
+    set: []  # No static set values, will be overridden by CLI
+    version: 1.0.0
+
+  - name: ui
+    chart: ./helloworld
+    namespace: default
+    needs:  # Wait for 'db' release to deploy first
+      - db
+    values:
+      - ./helloworld/values.yaml
+    set: []  # No static set values, will be overridden by CLI
+    # enabled: true  # Toggle this to false for specific environments, enable or disable releases
