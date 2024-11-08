@@ -1,13 +1,6 @@
 pipeline {
     agent any
     stages {
-
-        stage('SCM') {
-            steps {
-                git branch: 'main', url: 'git@github.com:shivendra-pratap-compunnel/k8s-deployment-app.git'
-            }
-        }
-
         stage('Deploy'){
             steps{
                 sh '''
