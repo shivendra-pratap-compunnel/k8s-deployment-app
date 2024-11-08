@@ -6,7 +6,7 @@ pipeline {
                 sh '''
                     cd ./zizzy-ops-multi-tier-app/
                     helmfile sync
-                    minikube service  --all
+                    /usr/local/bin/minikube service  --all
                 '''
             }
         }
