@@ -4,7 +4,7 @@ pipeline {
         stage('Deploy'){
             steps{
                 sh '''
-                    cd ./k8s-deployment-app/zizzy-ops-multi-tier-app/
+                    cd ./zizzy-ops-multi-tier-app/
                     helmfile sync
                 '''
             }
