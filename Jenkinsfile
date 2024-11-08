@@ -10,9 +10,9 @@ pipeline {
             }
         }
     }
-    post {
-	always{
-	    cleanWs()
-    	}
-    }
+    // post {
+	// always{
+	//     cleanWs()
+    // 	}
+    // }
 }
